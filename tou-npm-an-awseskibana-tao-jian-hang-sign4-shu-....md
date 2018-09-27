@@ -1,11 +1,11 @@
-# 透過npm - aws-es-kibana套件以Sign4訪問Kibana...
+# 透過npm安裝aws-es-kibana套件進行Sign4簽署協議訪問...
 
 ### 透過npm安裝aws-es-kibana套件進行Sign4簽署協議訪問...
 
 要對AWS資源進行Sign4簽名協議訪問，首先必須要創建一個擁有對Elasticsearch訪問權限的IAM角色。  
 以下為教學傳送門
 
-{% page-ref page="aws-iam.md" %}
+{% page-ref page="aws-iam-jian-zhi-jiao-xue.md" %}
 
 當你創建好IAM角色時，會得到屬於該角色的ACCESS\_KEY和ACCESS\_SECRET\_KEY，而接下來我們就要使用這兩個密鑰來進行SIGN4協議簽署以訪問AWS Kibana。
 
