@@ -136,5 +136,24 @@ Browse剛剛所產生出的ppk檔，完成後點選Open即可與其連線。
 
 ### Step 1 創建彈性IP
 
-至EC2 儀表板的左側導覽欄中點選Elastic IP，會出現以下介面，然後選擇Allocate new address。
+至EC2 儀表板的左側導覽欄中點選Elastic IP，會出現以下介面，然後選擇Allocate new address，然後接下來就是一直下一步即可創建完成。
+
+![](.gitbook/assets/elastic-ip%20%281%29.png)
+
+### Step 2 連結EC2 Instance
+
+當創建完成後，就可以看到所新建的彈性IP，這時勾選他並點選Actions，便會出現下拉式選單。
+
+![](.gitbook/assets/elasticipconnect.png)
+
+#### 點選Associate address
+
+在剛剛的下拉式選單點選Associate address後，選擇所要連結的EC2 Instance，並點選Associate即可完成連結。  
+但要注意的是，若選擇連結，則該原EC2 Instance的public IP會被釋放並被該彈性IP取代。
+
+![](.gitbook/assets/elasticip-guan-lian.png)
+
+#### 點選Release addresses
+
+在剛剛的下拉式選單點選Release addresses後，會跳出一個視窗，接著再選擇Release即可釋出。
 
