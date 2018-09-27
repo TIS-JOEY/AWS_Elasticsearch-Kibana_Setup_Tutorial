@@ -21,6 +21,11 @@
 
 而在這邊我們就是要建立一個反向代理伺服器，讓用戶可以透過這個反向代理伺服器並以Signature 4簽署協議來與AWS Kibana進行連接。
 
+以下為教學傳送門：
+
+* [透過npm - aws-es-kibana套件以Sign4訪問Kibana...](tou-npm-an-awseskibana-tao-jian-hang-sign4-shu-....md)
+* [透過AWS EC2與Nginx創建反向代理伺服器進行訪問...](tou-aws-ec2nginx-jian-fan-xiang-dai-li-si-fu-qi-hang-....md)
+
 ## Signature 4
 
 簡單來說，Signature Version 4是將身份驗證訊息添加到AWS request請求的過程。其工作原理如下：
@@ -31,5 +36,7 @@
 4. 使用IAM腳四的秘密訪問密鑰來生成一個簽名密鑰，並使用該密鑰和要簽署的字符串來產生簽名。
 5. 當AWS收到請求後，便會和你剛剛執行的相同步驟來計算簽名，若計算出的簽名和你所產生的簽名是匹配的，則處理請求，反之則拒絕。
 
-除了上述我們可以用Sign 4來訪問AWS Kibana外，我們亦可透過Sign 4搭配其他程式語言來操作AWS Elasticsearch數據，教學傳送門如下。
+除了上述我們可以用Sign 4來訪問AWS Kibana外，我們亦可透過Sign 4搭配其他程式語言來操作AWS Elasticsearch數據，教學傳送門如下：
+
+* [利用Sign4與Python來操作AWS Elasticsearch](https://github.com/TIS-JOEY/AWS_Elasticsearch-Kibana_Setup_Tutorial/tree/e2661e39513b35290bcc273136889983acec1e37/li-yong-sign4python-cao-zuo-aws-elasticsearch.md)
 
