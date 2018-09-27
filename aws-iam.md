@@ -55,7 +55,19 @@ AWS IAM服務最主要可以分為Users、Roles與Groups，接下來就讓我來
 
 #### Step 1
 
-創建方法一樣是在IAM Dashboard的左邊導覽欄中點選Groups，並點擊Create New Group。
+創建方法一樣是在IAM Dashboard的左邊導覽欄中點選Groups，並點擊Create New Group，接著輸入你的Group名字。
 
 ![](.gitbook/assets/iam-create-group.png)
+
+#### Step 2
+
+As usual，我們為該Group勾選他可以擁有的權限，最後一直下一步即可建置完成。
+
+![](.gitbook/assets/iam-group-permission.png)
+
+#### Step 3
+
+他的實際功效可以在創建User時感受到，我們可以直接選擇要指定哪一個Group，即可進行配置，而不用一個一個去勾。
+
+![](.gitbook/assets/iam-permission-jie-mian.png)
 
