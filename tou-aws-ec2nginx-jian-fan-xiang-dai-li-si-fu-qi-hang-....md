@@ -48,7 +48,78 @@ $ sudo amazon-linux-extras install nginx1.12
 $ sudo su
 ```
 
-接著，cd 至 /etc/nginx，並開啟nginx.conf
+接著，cd 至 /etc/nginx，並開啟nginx.conf進行編寫，你可使用vim或nano等文字編輯器。
 
 ![](.gitbook/assets/cd_nginx.png)
+
+nginx.conf配置資料如下：
+
+```text
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /var/run/nginx.pid;
+include /usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    include /etc/nginx/conf.d/*.conf;
+    index index.html index.htm;
+
+    server {
+      listen 80 default_server;
+      listen [::]:80 default_server ipv6only=on;
+      server_name _;
+
+      location / {
+        auth_basic "Username and Password are required";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+        proxy_set_header Host [Your Elasticsearch domain];
+        proxy_set_header X-Real-IP [Your Access IP];
+        proxy_http_version 1.1;
+        proxy_set_header Connection "Keep-Alive";
+        proxy_set_header Proxy-Connection "Keep-Alive";
+        proxy_set_header Authorization "";
+
+        proxy_pass [https://Your Elasticsearch Domain];
+
+      }
+
+      location /kibana {
+        auth_basic "Username and Password are required";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+        proxy_set_header Host [Your Elasticsearch Domain];
+        proxy_set_header X-Real-IP [Your Access IP];
+        
+        proxy_http_version 1.1;
+        proxy_set_header Connection "Keep-Alive";
+        proxy_set_header Proxy-Connection "Keep-Alive";
+        proxy_set_header Authorization "";
+
+        proxy_pass [https://Your Elasticsearch Domain/_plugin/kibana/];
+        proxy_redirect [https://Your Elasticsearch Domain/_plugin/kibana/] [http://Elastic IP/kibana/];
+
+      }
+
+  }
+
+}
+
+```
 
