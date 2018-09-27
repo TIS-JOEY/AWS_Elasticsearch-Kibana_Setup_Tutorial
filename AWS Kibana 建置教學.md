@@ -21,9 +21,8 @@
 
 而在這邊我們就是要建立一個反向代理伺服器，讓用戶可以透過這個反向代理伺服器並以Signature 4簽署協議來與AWS Kibana進行連接。
 
-{% page-ref page="tou-npm-an-awseskibana-tao-jian-hang-sign4-shu-....md" %}
-
-{% page-ref page="tou-aws-ec2nginx-jian-fan-xiang-dai-li-si-fu-qi-hang-....md" %}
+* [透過npm - aws-es-kibana套件以Sign4訪問Kibana...](tou-npm-an-awseskibana-tao-jian-hang-sign4-shu-....md)
+* [透過AWS EC2與Nginx創建反向代理伺服器進行訪問...](tou-aws-ec2nginx-jian-fan-xiang-dai-li-si-fu-qi-hang-....md)
 
 ## Signature 4
 
