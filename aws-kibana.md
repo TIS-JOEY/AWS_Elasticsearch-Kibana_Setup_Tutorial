@@ -127,3 +127,17 @@ AWS Kibana的連線網址應為127.0.0.1:9200/\_plugin/kibana
 
 我們的目標應為在該虛擬機中，透過Nginx來創建反向代理伺服器，並一樣透過SIGN 4簽署協議來對AWS Elasticsearch進行訪問。
 
+## Signature 4
+
+簡單來說，Signature Version 4是將身份驗證訊息添加到AWS request請求的過程。其工作原理如下：
+
+1. 首先肯定的，你必須先創建出一個IAM角色，並配置他可以擁有哪些權限。當創建完畢後，你便會得到該角色獨一無二的一對密鑰對\(訪問密鑰ID和秘密訪問密鑰\)。
+2. 創建出一個AWS request。
+3. 使用該AWS request和其他訊息來創建要簽署的字符串。
+4. 使用IAM腳四的秘密訪問密鑰來生成一個簽名密鑰，並使用該密鑰和要簽署的字符串來產生簽名。
+5. 當AWS收到請求後，便會和你剛剛執行的相同步驟來計算簽名，若計算出的簽名和你所產生的簽名是匹配的，則處理請求，反之則拒絕。
+
+除了上述我們可以用Sign 4來訪問AWS Kibana外，我們亦可透過Sign 4搭配其他程式語言來操作AWS Elasticsearch數據，教學傳送門如下。
+
+{% page-ref page="li-yong-sign4python-cao-zuo-aws-elasticsearch.md" %}
+
