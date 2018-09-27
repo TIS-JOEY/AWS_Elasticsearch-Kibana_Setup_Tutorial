@@ -25,7 +25,7 @@ Amazon Linux 2預設便有提供一個下載工具包，而Nginx便是其中一�
 你可輸入以下指令來查看Amazon Linux 2提供哪些包可直接下載。
 
 ```text
-$ amazon-linux-extras lista
+$ amazon-linux-extras list
 ```
 
 ![](.gitbook/assets/amazon-linux-extras_list.png)
@@ -37,4 +37,18 @@ $ sudo amazon-linux-extras install nginx1.12
 ```
 
 ![](.gitbook/assets/linux2_install_nginx_success.png)
+
+## Step 3 配置Nginx
+
+安裝好Nginx後，我們就可以開始配置Nginx來建構反向代理伺服器，並以Sign4協議來訪問AWS Kibana。
+
+但首先，先讓我們切換至root管理者權限，因為需要改動到系統的配置。
+
+```text
+$ sudo su
+```
+
+接著，cd 至 /etc/nginx，並開啟nginx.conf
+
+![](.gitbook/assets/cd_nginx.png)
 
