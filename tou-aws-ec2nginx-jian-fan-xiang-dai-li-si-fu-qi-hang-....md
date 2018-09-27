@@ -123,3 +123,53 @@ http {
 
 ```
 
+> 注意：Your Access IP是你在編寫Policy所編寫可訪問的IP。
+
+## Step 4 連接Kibana
+
+好了，當我們編寫完配置檔後，我們就已完成配置了。接下來就可以來透過反向代理伺服器來訪問AWS Kibana。
+
+有幾種方式可以讓我們來開啟反向代理伺服器並連接AWS Kibana，在這邊介紹其中一種 -「Systemctl」。
+
+#### 啟動反向代理伺服器連線
+
+```text
+$ systemctl start nginx.service
+```
+
+#### 關閉反向代理伺服器連線
+
+```text
+systemctl stop nginx.service
+```
+
+#### 重啟反向代理伺服器連線
+
+```text
+systemctl restart nginx.service
+```
+
+開啟後即可以在 \[ Access IP/\_plugin/kibana \]的網址對aws kibana進行訪問。
+
+> 注意：Your Access IP是你在編寫Policy所編寫可訪問的IP。
+
+## Step 5 建立帳密管理\(Optional\)
+
+在這裡我們還可以為該反向代理伺服器來建立帳密，提昇我們的安全性。建立的方式如下：
+
+登入EC2 Instance後，在EC2 Instance終端機中輸入以下指令來建立帳密
+
+```text
+$ sudo sh -c "echo -n 'username:' >> /etc/nginx/.htpasswd"
+$ sudo sh -c "openssl passwd -apr1 >> /etc/nginx/.htpasswd"
+# 第一行的'username'為你所想要建立的帳號(username)
+```
+
+接著系統會指示輸入你要建立的密碼，便接著輸入即可。
+
+而查看帳密的方式為在EC2 Instance終端機中輸入以下指令，即可進行查看：
+
+```text
+$ cat /etc/nginx/.htpasswd
+```
+
