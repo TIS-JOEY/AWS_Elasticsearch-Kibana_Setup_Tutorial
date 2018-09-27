@@ -1,7 +1,6 @@
 # 目錄\_AWS Elasticsearch建置教學
 
 
-* [目錄\_AWS Elasticsearch建置教學](README.md)
 * [AWS Elasticsearch建置教學](aws-elasticsearch-jian-zhi-jiao.md)
 * [AWS Kibana 建置教學](aws-kibana-jian-zhi-jiao.md)
 * [AWS EC2建置教學](aws-ec2.md)
