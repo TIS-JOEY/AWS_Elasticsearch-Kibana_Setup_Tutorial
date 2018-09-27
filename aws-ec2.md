@@ -1,2 +1,2 @@
-# AWS EC2
+# AWS EC2 建置教學
 

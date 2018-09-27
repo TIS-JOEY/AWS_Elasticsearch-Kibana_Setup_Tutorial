@@ -1,4 +1,4 @@
-# AWS Kibana
+# AWS Kibana 建置教學
 
 ## Introduction
 
@@ -19,7 +19,11 @@
 
 代理伺服器的工作原理是去各後方伺服器抓取資源放在伺服器上供client端進行讀取下載，而反向代理伺服器則正好相反，他會根據client端的request，從關聯的一組或多組伺服器上取得資源再返還給clietn端。clietn端只會知道反向代理伺服器的IP位址而不會知道代理伺服器後面的伺服器叢集的位址存在。後方伺服器叢集不能被用戶直接連結，而只能透過反向代理伺服器，使用這種方式除了可以提昇安全性外，亦可提供負載功能、加密、快取等。
 
-而在這邊我們就是要建立一個反向代理伺服器，讓用戶可以透過這個反向代理伺服器來與AWS Kibana進行連接。
+而在這邊我們就是要建立一個反向代理伺服器，讓用戶可以透過這個反向代理伺服器並以Signature 4簽署協議來與AWS Kibana進行連接。
+
+{% page-ref page="tou-npm-an-awseskibana-tao-jian-hang-sign4-shu-....md" %}
+
+{% page-ref page="tou-aws-ec2nginx-jian-fan-xiang-dai-li-si-fu-qi-hang-....md" %}
 
 ## Signature 4
 
