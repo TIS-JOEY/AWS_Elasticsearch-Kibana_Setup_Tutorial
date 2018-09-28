@@ -38,17 +38,54 @@ Elasticsearch目前在搜尋引擎領域中已舉世聞名，是一種開源的R
 
 ### Step 3 Configuration Cluster
 
-#### Node Configuration
+#### 計算配置需求
 
-Elasticsearch是由許多節點所組成，而每個節點又有許多分片\(Shards\)，其會將輸入資料進行切割，並儲存至各個分片中。
+那麼在這邊我們需要先計算我們所需要的最小存儲要求，以下為AWS官方文黨所提供的公式。
 
-那麼這時，我們要先進行節點的配置，原則上，節點的數量是依照你的需求進行配置，在這邊先不用急，我們在後面會提供AWS所建議的公式來進行節點數的計算。
+最小存儲大小 = 原始數據資料大小 \* \(1 + 副本數量\) \* \(1 + 索引開銷\) /  \(1- Linux 預留空間\) / \(1 - Amazon ES 開銷\)
+
+* 副本數量：每個副本都是每個索引的完整複製，而副本數量增加還能增加搜索性能，因此若需要進行大量搜尋的系統，可提高副本的數量。
+* 索引開銷：索引磁盤大小不盡相同，但通常大小為源數據的10%。
+* Linux 預留空間：Linux默認設置保留5%的文件系統供root使用者進行系統恢復、防止磁碟碎片的操作。
+* Amazon ES 開銷：Amazon ES會在每個Instance中，為分段合併、日誌或其他內部操作保留 20% 的儲存空间 \(最多可達 20 GB\)。
+
+> 此公式在每個實例大小小於100GB的情況下是準確的。
+
+分片數量計算：
+
+每個節點都會有好幾個分片，預設為5，傳入資料會被切分並被分配至各個分片中。 但這個分片不應太多也不應太少，太少太大的話會使發生故障時難以恢復，而太多太小的話則會產生許多不必要的資料碎片，影響效能。 AWS 官方文檔提到每個分片的空間大小維持在30~50GB是個不錯的選擇。
+
+以下一樣提供AWS官方文黨所提供的公式：
+
+分片數量 = \(原始數據大小 + 預測未來可能會增長的空間\) \* \(1 + 索引開銷\) / 分片大小
+
+> 注意：每個節點分片數量必須在Amazon Elastics Domain創建初始時，就必須指定。 因為當資料傳入後便不可改動。
+
+若想改動預設配置，可使用以下的Restful語句
+
+```text
+PUT elasticsearch_domain/index_name
+{"settings": {"number_of_shards": x, "number_of_replicas": y}}
+```
+
+* elasticsearch\_domain：為你的Elasticsearch domain
+* index\_name：為你要改動的index
+* number\_of\_shards：要指定的分片數量
+* number\_of\_replicas：為要指定的副本數量
 
 同時，我們還可以去定義節點的種類，有些是運算優化、有些是儲存優化等等，同樣地節點的種類也是依照你的需求而定。
 
 ![](.gitbook/assets/node_configuration.png)
 
+#### Node Configuration
+
+那麼這時我們要先進行節點的配置，原則上，節點的數量是依照你的需求進行配置。Elasticsearch是由許多節點所組成，而每個節點又有許多分片\(Shards\)，其會將輸入資料進行切割，並儲存至各個分片中。
+
+![](.gitbook/assets/node_configuration.png)
+
 #### 配置：因為只是練習，所以只需把Instance count設為1，種類設為t2.small.elasticsearch，因為這樣才不會被收費哈哈。
+
+#### 
 
 #### Dedicated master node \(optional\)
 
@@ -62,6 +99,8 @@ Elasticsearch是由許多節點所組成，而每個節點又有許多分片\(Sh
 
 #### 配置：不啟用
 
+
+
 #### Zone awareness \(optional\)
 
 Zone awareness\(區域感知\)是一種提高數據持久性的技術，其將節點在同一區域的不同可用區進行部署，但這也意味著你必須部署偶數數量的Instance，如此才可在兩個可用區平均分配Instance。
@@ -74,11 +113,15 @@ Zone awareness\(區域感知\)是一種提高數據持久性的技術，其將�
 
 #### 配置：不啟用
 
+
+
 #### Storage Configuration
 
 此設定為為你的Instance選擇儲存容量的大小與儲存硬體種類、儲存方式種類。其中儲存硬體種類分為EBS\(預設\)和SSD等等，而這些一樣是依你的需求來進行配置。
 
-#### 配置：Storage Type選擇EBS，EBS Volume Type選擇General Purpose SSD，EBS Volume Size選擇10，原因一樣因為不會被收費ＸＤ。
+#### 配置：Storage Type選擇EBS，EBS Volume Type選擇General Purpose SSD，EBS Volume Size選擇10，原因一樣因為不會被收費。
+
+
 
 #### 靜態數據加密\(Optional\)
 
@@ -88,6 +131,8 @@ Zone awareness\(區域感知\)是一種提高數據持久性的技術，其將�
 
 #### 配置：目前不啟用。
 
+
+
 #### Snapshot configuration
 
 配置你要固定在何時進行快照備份。
@@ -95,6 +140,8 @@ Zone awareness\(區域感知\)是一種提高數據持久性的技術，其將�
 ![](.gitbook/assets/storagetype.png)
 
 #### 配置：設置為預設時間即可。
+
+
 
 ### Step 4 Setup Access
 
@@ -116,11 +163,15 @@ Public Access可使用公網來進行訪問，但我們可以利用一些技巧�
 
 #### 配置：Public Access
 
+
+
 #### Kibana authentication
 
 AWS提供AWS Cognito來讓特定人可訪問Kibana介面。但在這邊我們所使用的技巧是透過反向代理伺服器搭配基於IP的策略來建構我們的服務。因此這邊也不多加著墨，有興趣者可直接參閱AWS官方文件。
 
 #### 配置：不啟用
+
+
 
 #### Access Policy
 
