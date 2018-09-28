@@ -25,6 +25,7 @@
 
 ## 前置作業：
 ```text
+$ git clone https://github.com/TIS-JOEY/AWS_Elasticsearch_aws-requests-auth_Python_Interface.git
 $ pip install aws-requests-auth
 $ pip install elasticsearch
 ```
