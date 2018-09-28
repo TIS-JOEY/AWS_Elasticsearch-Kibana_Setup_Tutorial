@@ -185,3 +185,5 @@ Resource：代表的是Elasticsearch叢集哪一個資源。
 }
 ```
 
+> 注意：在此Policy所設置的Allowed IPs將會是我們為了連接Kibana，利用Nginx建立反向代理伺服器所設置的IP。詳情請至 [透過AWS EC2與Nginx創建反向代理伺服器進行訪問...](tou-aws-ec2nginx-jian-fan-xiang-dai-li-si-fu-qi-hang-....md) 查看。
+
