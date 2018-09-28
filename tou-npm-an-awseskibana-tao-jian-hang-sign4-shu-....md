@@ -28,14 +28,14 @@ $ cd .aws
 ```
 
 4. cd進入.aws資料夾後vim 一個名為credentials的檔案，使用INSERT模式\(輸入i\)  
-   並開始編寫以下內容: 
+   並開始編寫以下內容，完成編寫後，再按ESC，並輸入:wq來儲存寫入跳出。
 
 ```text
 [default] 
 aws_access_key_id = ****************
 aws_secret_access_key = ****************
 ```
-   完成編寫後，再按ESC，並輸入:wq來儲存寫入並跳出。
+
 
 5. 回到終端機後中輸入：
 
@@ -71,14 +71,13 @@ $ cd .aws
 ```
 
 4. cd進入.aws資料夾後一樣也是vim出一個名為credentials的檔案，使用INSERT  
-   模式\(輸入i\)，並開始編寫以下內容: 
+   模式\(輸入i\)，並開始編寫以下內容，完成編寫後，再按ESC，並輸入:wq來儲存寫入跳出。   
 
 ```text
 [default] 
 aws_access_key_id = ****************
 aws_secret_access_key = ****************
 ```
-   完成編寫後，再按ESC，並輸入:wq來儲存寫入並跳出。  
   
 5. 回到終端機後中輸入：
 
