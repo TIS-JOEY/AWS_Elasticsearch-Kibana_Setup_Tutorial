@@ -190,18 +190,18 @@ Resource：代表的是Elasticsearch叢集哪一個資源。
 
 ![&#x8CC7;&#x6599;&#x4F86;&#x6E90;&#xFF1A;AWS Elasticsearch&#x5B98;&#x65B9;&#x6587;&#x6A94;](.gitbook/assets/ji-yu-zi-yuan-de-ce-lve.png)
 
-    2. 基於身份的策略  
-        此策略與基於資源的策略其實很像，也是可以限制哪些人可以訪問哪些資源，  
-        但不同的是基於身份的策略是去IAM\(AWS Identity and Access Management\)  
-        將可使用的動作附加至某角色中。因此在Policy不用指定Principal，而是授與  
-        角色們對以Describe和List開頭的操作權限，並允許對所有index發送get請求。  
-        可以發現這個策略僅提供read-only。
+2. 基於身份的策略  
+   此策略與基於資源的策略其實很像，也是可以限制哪些人可以訪問哪些資源，  
+   但不同的是基於身份的策略是去IAM\(AWS Identity and Access Management\)  
+   將可使用的動作附加至某角色中。因此在Policy不用指定Principal，而是授與  
+   角色們對以Describe和List開頭的操作權限，並允許對所有index發送get請求。  
+   可以發現這個策略僅提供read-only。
 
 ![&#x8CC7;&#x6599;&#x4F86;&#x6E90;&#xFF1A;AWS Elasticsearch&#x5B98;&#x65B9;&#x6587;&#x6A94;](.gitbook/assets/ji-yu-shen-fen-de-ce-lve.png)
 
-    3. 基於IP的策略  
-        最後一個策略也是本文主要要教學的策略-基於IP的策略，他可以指定有哪些IP才可訪問Elasticsearch domain。
-        由下圖可以看到，基於IP的策略可以和其他的策略相互結合，讓你的配置管理更加彈性。
+3. 基於IP的策略  
+   最後一個策略也是本文主要要教學的策略-基於IP的策略，他可以指定有哪些IP才可訪問Elasticsearch domain。
+   由下圖可以看到，基於IP的策略可以和其他的策略相互結合，讓你的配置管理更加彈性。
 
 ```text
 {
