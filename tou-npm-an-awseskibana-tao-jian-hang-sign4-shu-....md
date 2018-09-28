@@ -20,15 +20,15 @@
 $ npm install -g aws-es-kibana
 ```
 
-    3. 透過終端機cd至user目錄，於終端機輸入以下指令來建立.aws的檔案夾並進入
+3. 透過終端機cd至user目錄，於終端機輸入以下指令來建立.aws的檔案夾並進入
 
 ```text
 $ mkdir ~/.aws 
 $ cd .aws
 ```
 
-    4. cd進入.aws資料夾後vim 一個名為credentials的檔案，使用INSERT模式\(輸入i\)  
-        並開始編寫以下內容: 
+4. cd進入.aws資料夾後vim 一個名為credentials的檔案，使用INSERT模式\(輸入i\)  
+   並開始編寫以下內容: 
 
 ```text
 [default] 
@@ -36,16 +36,16 @@ aws_access_key_id = ****************
 aws_secret_access_key = ****************
 ```
 
-         完成編寫後，再按ESC，並輸入:wq來儲存寫入並跳出。
+   完成編寫後，再按ESC，並輸入:wq來儲存寫入並跳出。
 
-    5. 回到終端機後中輸入：
+5. 回到終端機後中輸入：
 
 ```text
 $ export AWS_ACCESS_KEY_ID = ****************
 $ export AWS_SECRET_ACCESS_KEY = ****************
 ```
 
-    6. 完成建置後，即可於任意時候在終端機透過以下指令來與AWS Kibana連接
+6. 完成建置後，即可於任意時候在終端機透過以下指令來與AWS Kibana連接
 
 ```text
 $ aws-es-kibana <cluster-endpoint>
@@ -63,16 +63,16 @@ AWS Kibana的連線網址應為127.0.0.1:9200/\_plugin/kibana
 npm install -g aws-es-kibana
 ```
 
-    3. 透過終端機cd至C://Users/使用者名稱/，於終端機輸入以下指令來建立.aws的  
-         檔案夾並進入.aws資料夾
+3. 透過終端機cd至C://Users/使用者名稱/，於終端機輸入以下指令來建立.aws的  
+   檔案夾並進入.aws資料夾
 
 ```text
 $ mkdir ~/.aws 
 $ cd .aws
 ```
 
-    4. cd進入.aws資料夾後一樣也是vim出一個名為credentials的檔案，使用INSERT  
-        模式\(輸入i\)，並開始編寫以下內容: 
+4. cd進入.aws資料夾後一樣也是vim出一個名為credentials的檔案，使用INSERT  
+   模式\(輸入i\)，並開始編寫以下內容: 
 
 ```text
 [default] 
@@ -80,16 +80,16 @@ aws_access_key_id = ****************
 aws_secret_access_key = ****************
 ```
 
-         完成編寫後，再按ESC，並輸入:wq來儲存寫入並跳出。  
+   完成編寫後，再按ESC，並輸入:wq來儲存寫入並跳出。  
   
-     5. 回到終端機後中輸入：
+5. 回到終端機後中輸入：
 
 ```text
 $ SET AWS_ACCESS_KEY_ID = ****************
 $ SET AWS_SECRET_ACCESS_KEY = ****************
 ```
 
-     6. 完成建置後，即可於任意時候在終端機透過以下指令來與AWS Kibana連接
+6. 完成建置後，即可於任意時候在終端機透過以下指令來與AWS Kibana連接
 
 ```text
 $ aws-es-kibana <cluster-endpoint>
