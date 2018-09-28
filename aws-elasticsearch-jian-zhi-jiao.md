@@ -199,12 +199,9 @@ Resource：代表的是Elasticsearch叢集哪一個資源。
 
 ![&#x8CC7;&#x6599;&#x4F86;&#x6E90;&#xFF1A;AWS Elasticsearch&#x5B98;&#x65B9;&#x6587;&#x6A94;](.gitbook/assets/ji-yu-shen-fen-de-ce-lve.png)
 
-       3. 基於IP的策略  
-           最後一個策略也是本文主要要教學的策略-基於IP的策略，他可以指定有哪些  
-           IP才可訪問Elasticsearch domain。  
-  
-           由下圖可以看到，基於IP的策略可以和其他的策略相互結合，讓你的配置管  
-           理更加彈性。
+    3. 基於IP的策略  
+        最後一個策略也是本文主要要教學的策略-基於IP的策略，他可以指定有哪些IP才可訪問Elasticsearch domain。
+        由下圖可以看到，基於IP的策略可以和其他的策略相互結合，讓你的配置管理更加彈性。
 
 ```text
 {
