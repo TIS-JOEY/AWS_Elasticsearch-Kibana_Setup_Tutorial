@@ -35,7 +35,6 @@ $ cd .aws
 aws_access_key_id = ****************
 aws_secret_access_key = ****************
 ```
-
    完成編寫後，再按ESC，並輸入:wq來儲存寫入並跳出。
 
 5. 回到終端機後中輸入：
@@ -79,7 +78,6 @@ $ cd .aws
 aws_access_key_id = ****************
 aws_secret_access_key = ****************
 ```
-
    完成編寫後，再按ESC，並輸入:wq來儲存寫入並跳出。  
   
 5. 回到終端機後中輸入：
