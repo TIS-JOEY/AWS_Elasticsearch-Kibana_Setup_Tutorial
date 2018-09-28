@@ -1,6 +1,7 @@
 # 目錄
 
 目地：
+
 有鑒於目前對於AWS Elasticsearch的中文資源相當稀少，因此分享個人對於AWS Elasticsearch&Kibana的完整建置教學。
 
 
